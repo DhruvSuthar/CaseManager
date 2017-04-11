@@ -1,0 +1,110 @@
+﻿<Page x:Class="CaseManager.Pages.OldPatient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CaseManager.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="768" d:DesignWidth="1366"
+      Title="OldPatient">
+
+    <Grid>
+        <Grid Background="DimGray">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="5*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="cNo" Foreground="Black" FontWeight="Bold" Content="Case No." HorizontalAlignment="Right" Grid.Row="0" VerticalAlignment="Center"/>
+                <Label x:Name="cDate" Foreground="Black" FontWeight="Bold" Content="Date" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"/>
+                <Label x:Name="cExp" Foreground="Black" FontWeight="Bold" Content="Case Expiration Date" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center"/>
+                <Label x:Name="cName" Foreground="Black" FontWeight="Bold" Content="Name" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Center"/>
+                <Label x:Name="cAddr" Foreground="Black" FontWeight="Bold" Content="Address" HorizontalAlignment="Right" Grid.Row="4" VerticalAlignment="Center"/>
+                <Label x:Name="cAge" Foreground="Black" FontWeight="Bold" Content="Age" HorizontalAlignment="Right" Grid.Row="5" VerticalAlignment="Center"/>
+                <Label x:Name="cBp" Foreground="Black" FontWeight="Bold" Content="Blood Pressure" HorizontalAlignment="Right" Grid.Row="6" VerticalAlignment="Center"/>
+                <Label x:Name="cTemp" Foreground="Black" FontWeight="Bold" Content="Temprature" HorizontalAlignment="Right" Grid.Row="7" VerticalAlignment="Center"/>
+                <Label x:Name="cHist" Foreground="Black" FontWeight="Bold" Content="History" HorizontalAlignment="Right" Grid.Row="8" VerticalAlignment="Center"/>
+                <Label x:Name="cTreat" Foreground="Black" FontWeight="Bold" Content="Treatment" HorizontalAlignment="Right" Grid.Row="9" VerticalAlignment="Center"/>
+                <Label x:Name="cPrice" Foreground="Black" FontWeight="Bold" Content="Cash Taken" HorizontalAlignment="Right" Grid.Row="10"/>
+                <Label Content="{Binding oPatient.CaseNo}" x:Name="cNoEdit" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
+                <Label Content="{Binding oPatient.CaseDate}" x:Name="cDateEdit" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+                <Label Content="{Binding oPatient.ExpiresOn}" x:Name="cExpDateEdit" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding oPatient.Name}" x:Name="cNameEdit" Height="auto" MinWidth="200" MaxWidth="450" Width="auto" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
+                <TextBlock Text="{Binding oPatient.Address}" x:Name="cAddrEdit" Height="auto" MinWidth="200" MaxWidth="450" Width="auto" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
+                <TextBlock Text="{Binding oPatient.Age}" x:Name="cAgeEdit" Height="auto" Width="50" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6">
+                    <TextBox Background="LightGray" x:Name="cBpEditH" Height="auto" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3" />
+                    <Label Content="/"  VerticalAlignment="Center" FontWeight="ExtraBold"/>
+                    <TextBox Background="LightGray" x:Name="cBpEditL" Height="auto" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3" />
+                </StackPanel>
+                <TextBox Background="LightGray" x:Name="cTempEdit" Height="auto" Width="50" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
+                <TextBox Background="LightGray" x:Name="cHistEdit" Height="auto" MinWidth="200" Width="auto" MaxWidth="450" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
+                <TextBox Background="LightGray" x:Name="cTreatEdit" Height="auto" MinWidth="200" Width="auto" MaxWidth="450" Grid.Row="9" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
+                <TextBox Background="LightGray" x:Name="cPriceEdit" Height="30" Width="80" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3"/>
+                <Button Background="LightGray" x:Name="Cancel" Content="Cancel" Foreground="Black" FontWeight="Bold" Width="auto" HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="10" VerticalAlignment="Bottom" Height="30" Margin="5"/>
+                <Button Background="LightGray" x:Name="Submit" Content="Submit" Foreground="Black" FontWeight="Bold" Width="auto" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="10" Margin="5"/>
+
+                <Grid Grid.Column="2" Grid.RowSpan="11">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="History" HorizontalAlignment="Left" Grid.Row="0" FontWeight="Bold"/>
+                    <ScrollViewer Margin="5" VerticalScrollBarVisibility="Auto" Grid.Row="1">
+                        <ListView x:Name="HistoryList" Background="LightGray" ItemsSource="{Binding oPatient.PatientHistory}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Date : "/>
+                                            <TextBlock Text="{Binding Date}" Foreground="DarkBlue"/>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock Text="Blood Pressure : "/>
+                                            <TextBlock Text="{Binding BloodPressure}" Foreground="Black" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock Text="Blood Pressure : "/>
+                                            <TextBlock Text="{Binding BloodPressure}" Foreground="Black" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock Text="Temperature : "/>
+                                            <TextBlock Text="{Binding Temperature}" Foreground="Black" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock Text="History : "/>
+                                            <TextBlock Text="{Binding Text}" Foreground="Black" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <TextBlock Text="Treatment : "/>
+                                            <TextBlock Text="{Binding TreatmentDone}" Foreground="Black" TextWrapping="Wrap"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
