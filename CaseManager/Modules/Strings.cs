@@ -15,5 +15,17 @@ namespace CaseManager.Modules
         public static string Stats = "Statistics";
         public static string Turnover = "Turnover";
 
+        //Columns
+        public static string LastModified = "LastModified";
+        public static string Count = "CaseCount";
+        public static string RevOld = "RevFromOld";
+        public static string RevNew = "RevFromNew";
+        public static string Expired = "Expired";
+        public static string PatientName = "Name";
+        public static string CaseID = "CID";
+        public static string CaseDate = "CaseDate";
+        public static string Date = "Date";
+        public static string Amount = "Amount";
+
     }
 }
