@@ -19,7 +19,7 @@ namespace CaseManager.Modules.DataStructures
 
         public DataModel()
         {
-            GetDataFromDB();
+            //GetDataFromDB();
         }
 
         public void ResetData()
@@ -80,6 +80,7 @@ namespace CaseManager.Modules.DataStructures
                     CaseCount = Now.Year.ToString() + Now.Month.ToString() + "-" + count;
                     RevenueFromNew = 0;
                     RevenueFromOld = 0;
+                    DataSource.Insert(new List<string>() { Now.ToString(), "0", "0", "0" }, Strings.Stats);
                     return true;
                 }
             }
