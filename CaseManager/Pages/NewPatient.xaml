@@ -9,7 +9,7 @@
       Title="NewPatient">
 
     <Grid>
-        <Grid Background="DimGray">
+        <Grid Background="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -33,20 +33,20 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
-                <Label x:Name="cNo" Foreground="Black" FontWeight="Bold" Content="Case No." HorizontalAlignment="Right" Grid.Row="0" VerticalAlignment="Center"/>
-                <Label x:Name="cDate" Foreground="Black" FontWeight="Bold" Content="Date" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"/>
-                <Label x:Name="cExp" Foreground="Black" FontWeight="Bold" Content="Case Expiration Date" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center"/>
-                <Label x:Name="cName" Foreground="Black" FontWeight="Bold" Content="Name" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Center"/>
-                <Label x:Name="cAddr" Foreground="Black" FontWeight="Bold" Content="Address" HorizontalAlignment="Right" Grid.Row="4" VerticalAlignment="Center"/>
-                <Label x:Name="cAge" Foreground="Black" FontWeight="Bold" Content="Age" HorizontalAlignment="Right" Grid.Row="5" VerticalAlignment="Center"/>
-                <Label x:Name="cBp" Foreground="Black" FontWeight="Bold" Content="Blood Pressure" HorizontalAlignment="Right" Grid.Row="6" VerticalAlignment="Center"/>
-                <Label x:Name="cTemp" Foreground="Black" FontWeight="Bold" Content="Temprature" HorizontalAlignment="Right" Grid.Row="7" VerticalAlignment="Center"/>
-                <Label x:Name="cHist" Foreground="Black" FontWeight="Bold" Content="History" HorizontalAlignment="Right" Grid.Row="8" VerticalAlignment="Center"/>
-                <Label x:Name="cTreat" Foreground="Black" FontWeight="Bold" Content="Treatment" HorizontalAlignment="Right" Grid.Row="9" VerticalAlignment="Center"/>
-                <Label x:Name="cPrice" Foreground="Black" FontWeight="Bold" Content="Cash Taken" HorizontalAlignment="Right" Grid.Row="10"/>
-                <Label x:Name="cNoEdit" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
-                <Label x:Name="cDateEdit" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
-                <Label x:Name="cExpDateEdit" Foreground="Black" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
+                <Label x:Name="cNo" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="Case No." HorizontalAlignment="Right" Grid.Row="0" VerticalAlignment="Center"/>
+                <Label x:Name="cDate" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="Date" HorizontalAlignment="Right" Grid.Row="1" VerticalAlignment="Center"/>
+                <Label x:Name="cExp" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="Case Expiration Date" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center"/>
+                <Label x:Name="cName" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="Name" HorizontalAlignment="Right" Grid.Row="3" VerticalAlignment="Center"/>
+                <Label x:Name="cAddr" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="Address" HorizontalAlignment="Right" Grid.Row="4" VerticalAlignment="Center"/>
+                <Label x:Name="cAge" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="Age" HorizontalAlignment="Right" Grid.Row="5" VerticalAlignment="Center"/>
+                <Label x:Name="cBp" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="Blood Pressure" HorizontalAlignment="Right" Grid.Row="6" VerticalAlignment="Center"/>
+                <Label x:Name="cTemp" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="Temprature" HorizontalAlignment="Right" Grid.Row="7" VerticalAlignment="Center"/>
+                <Label x:Name="cHist" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="History" HorizontalAlignment="Right" Grid.Row="8" VerticalAlignment="Center"/>
+                <Label x:Name="cTreat" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="Treatment" HorizontalAlignment="Right" Grid.Row="9" VerticalAlignment="Center"/>
+                <Label x:Name="cPrice" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="Cash Taken" HorizontalAlignment="Right" Grid.Row="10"/>
+                <Label x:Name="cNoEdit" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
+                <Label x:Name="cDateEdit" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+                <Label x:Name="cExpDateEdit" Foreground="{Binding Theme.ForegroundColor, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
                 <TextBox Background="LightGray" x:Name="cNameEdit" Height="auto" MinWidth="200" MaxWidth="450" Width="auto" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
                 <TextBox Background="LightGray" x:Name="cAddrEdit" Height="auto" MinWidth="200" MaxWidth="450" Width="auto" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
                 <TextBox Background="LightGray" x:Name="cAgeEdit" Height="auto" Width="50" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
@@ -59,8 +59,8 @@
                 <TextBox Background="LightGray" x:Name="cHistEdit" Height="auto" MinWidth="200" Width="auto" MaxWidth="450" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
                 <TextBox Background="LightGray" x:Name="cTreatEdit" Height="auto" MinWidth="200" Width="auto" MaxWidth="450" Grid.Row="9" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
                 <TextBox Background="LightGray" x:Name="cPriceEdit" Height="30" Width="80" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3"/>
-                <Button Background="LightGray" x:Name="Cancel" Content="Cancel" Foreground="Black" FontWeight="Bold" Width="150" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="10" VerticalAlignment="Bottom" Height="30" Margin="5"/>
-                <Button Background="LightGray" x:Name="Submit" Content="Submit" Foreground="Black" FontWeight="Bold" Width="150" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="10" Margin="5"/>
+                <Button Background="DimGray" x:Name="Cancel" Content="Cancel" Foreground="DarkBlue" FontWeight="Bold" Width="150" HorizontalAlignment="Right" Grid.Column="0" Grid.Row="10" VerticalAlignment="Bottom" Height="30" Margin="5"/>
+                <Button Background="DimGray" x:Name="Submit" Content="Submit" Foreground="DarkBlue" FontWeight="Bold" Width="150" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="10" Margin="5"/>
             </Grid>
         </Grid>
     </Grid>
