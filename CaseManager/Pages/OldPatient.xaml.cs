@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CaseManager.Modules;
+using CaseManager.Modules.DataStructures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,14 +17,17 @@ using System.Windows.Shapes;
 
 namespace CaseManager.Pages
 {
-    /// <summary>
-    /// Interaction logic for OldPatient.xaml
-    /// </summary>
     public partial class OldPatient : Page
     {
-        public OldPatient()
+        private MainWindow window;
+        public DataModel Source { get { return window.dm; } }
+        public ColorScheme Theme { get { return window.Theme; } set { window.Theme = value; } }
+
+        public OldPatient(MainWindow window)
         {
             InitializeComponent();
+            this.window = window;
+            this.DataContext = this;
         }
     }
 }
