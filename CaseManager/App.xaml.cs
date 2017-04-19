@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaseManager.Modules.DataStructures;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -13,5 +14,7 @@ namespace CaseManager
     /// </summary>
     public partial class App : Application
     {
+        public DataModel DefaultDataModel { get; set; } = new DataModel();
+
     }
 }

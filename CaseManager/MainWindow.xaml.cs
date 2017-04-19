@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaseManager.Modules.DataStructures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,17 +13,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CaseManager.Pages;
 
 namespace CaseManager
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        private DataModel dm;
+
         public MainWindow()
         {
             InitializeComponent();
+            dm = (Application.Current as App).DefaultDataModel;
+            dm.ResetData();
+            mainFrame.Navigate(new Dashboard());
         }
     }
 }

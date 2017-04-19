@@ -80,6 +80,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modules\ColorScheme.cs" />
     <Compile Include="Modules\DataProvider.cs" />
     <Compile Include="Modules\DataStructures\History.cs" />
     <Compile Include="Modules\DataStructures\Patient.cs" />
