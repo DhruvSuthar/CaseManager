@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace CaseManager.Modules
 {
-    class ColorScheme
+    public class ColorScheme
     {
         public Brush ForegroundColorPrimary { get; set; }
         public Brush BackgroundColor { get; set; }

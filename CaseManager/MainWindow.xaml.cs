@@ -14,12 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CaseManager.Pages;
+using CaseManager.Modules;
 
 namespace CaseManager
 {
     public partial class MainWindow : Window
     {
         private DataModel dm;
+        public ColorScheme Theme { get; set; }
 
         public MainWindow()
         {
