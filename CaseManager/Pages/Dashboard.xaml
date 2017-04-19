@@ -10,7 +10,7 @@
 
     <Grid x:Name="maingrid" Background="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}">
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Center">
-            <Button Background="Transparent" BorderBrush="Transparent">
+            <Button Background="Transparent" BorderBrush="Transparent" Click="NewPatientClick">
                 <Button.Content>
                     <Grid Margin="5">
                         <Grid.RowDefinitions>
@@ -22,7 +22,7 @@
                     </Grid>
                 </Button.Content>
             </Button>
-            <Button Background="Transparent" BorderBrush="Transparent">
+            <Button Background="Transparent" BorderBrush="Transparent" Click="OldPatientClick">
                 <Button.Content>
                     <Grid Margin="5">
                         <Grid.RowDefinitions>
@@ -34,7 +34,7 @@
                     </Grid>
                 </Button.Content>
             </Button>
-            <Button Background="Transparent" BorderBrush="Transparent">
+            <Button Background="Transparent" BorderBrush="Transparent" Click="StatsClick">
                 <Button.Content>
                     <Grid Margin="5">
                         <Grid.RowDefinitions>

@@ -29,5 +29,18 @@ namespace CaseManager.Pages
             this.window = window;
             this.DataContext = this;
         }
+
+        private void NewPatientClick(object sender, RoutedEventArgs e)
+        {
+            window.mainFrame.Navigate(new NewPatient(window));
+        }
+        private void OldPatientClick(object sender, RoutedEventArgs e)
+        {
+            window.mainFrame.Navigate(new OldPatient(window));
+        }
+        private void StatsClick(object sender, RoutedEventArgs e)
+        {
+            //window.mainFrame.Navigate(new Stats(window));
+        }
     }
 }
