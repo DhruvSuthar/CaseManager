@@ -8,32 +8,44 @@
       d:DesignHeight="768" d:DesignWidth="1366"
       Title="Dashboard">
 
-    <Grid>
+    <Grid x:Name="maingrid" Background="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}">
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Center">
-            <Grid Margin="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
-                <TextBlock Text="New Patient" Grid.Row="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
-            <Grid Margin="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
-                <TextBlock Text="Old Patient" Grid.Row="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
-            <Grid Margin="5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="4*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
-                <TextBlock Text="Statistics" Grid.Row="1" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Grid>
+            <Button Background="Transparent" BorderBrush="Transparent">
+                <Button.Content>
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
+                        <TextBlock Text="New Patient" Grid.Row="1" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </Button.Content>
+            </Button>
+            <Button Background="Transparent" BorderBrush="Transparent">
+                <Button.Content>
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
+                        <TextBlock Text="Old Patient" Grid.Row="1" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </Button.Content>
+            </Button>
+            <Button Background="Transparent" BorderBrush="Transparent">
+                <Button.Content>
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
+                        <TextBlock Text="Statistics" Grid.Row="1" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </Button.Content>
+            </Button>
         </StackPanel>
     </Grid>
 </Page>

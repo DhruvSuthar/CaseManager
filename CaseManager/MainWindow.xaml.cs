@@ -20,7 +20,7 @@ namespace CaseManager
 {
     public partial class MainWindow : Window
     {
-        private DataModel dm;
+        public DataModel dm { get; }
         public ColorScheme Theme { get; set; }
 
         public MainWindow()
@@ -28,7 +28,8 @@ namespace CaseManager
             InitializeComponent();
             dm = (Application.Current as App).DefaultDataModel;
             dm.ResetData();
-            mainFrame.Navigate(new Dashboard());
+            Theme = ColorScheme.GetDarkTheme();
+            mainFrame.Navigate(new Dashboard(this));
         }
     }
 }
