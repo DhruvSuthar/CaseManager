@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CaseManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="1000" MinHeight="500" MinWidth="1000">
-    <Grid>
-        <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
+        Title="MainWindow" Height="500" Width="1000" MinHeight="500" MinWidth="1000" Background="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+    <Grid Background="Transparent">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Background="Transparent" Grid.Row="0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right">
+                    <TextBlock Text="Theme : " Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Margin="5"/>
+                    <TextBlock x:Name="themeText" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Text="Dark" VerticalAlignment="Center" Margin="5"/>
+                    <Grid VerticalAlignment="Center" Margin="5">
+                        <Rectangle Width="80" Height="10" Fill="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Button HorizontalAlignment="Left" x:Name="slider" BorderBrush="Transparent" Click="slider_Click">
+                            <Button.Content>
+                                <Rectangle Width="10" Height="25" Fill="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden" Grid.Row="1"/>
+        </Grid>
     </Grid>
 </Window>

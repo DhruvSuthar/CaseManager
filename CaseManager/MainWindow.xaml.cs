@@ -25,11 +25,32 @@ namespace CaseManager
 
         public MainWindow()
         {
+            Theme = ColorScheme.GetDarkTheme();
             InitializeComponent();
             dm = (Application.Current as App).DefaultDataModel;
             dm.ResetData();
-            Theme = ColorScheme.GetDarkTheme();
             mainFrame.Navigate(new Dashboard(this));
+            DataContext = this;
+        }
+
+        private void slider_Click(object sender, RoutedEventArgs e)
+        {
+            if (themeText.Text == "Dark")
+            {
+                slider.HorizontalAlignment = HorizontalAlignment.Right;
+                themeText.Text = "Light";
+                Theme = ColorScheme.GetLightTheme();
+            }
+            else
+            {
+                slider.HorizontalAlignment = HorizontalAlignment.Left;
+                themeText.Text = "Dark";
+                Theme = ColorScheme.GetDarkTheme();
+            }
+            DataContext = null;
+            DataContext = this;
+            (mainFrame.Content as Page).DataContext = null;
+            (mainFrame.Content as Page).DataContext = (mainFrame.Content as Page);
         }
     }
 }
