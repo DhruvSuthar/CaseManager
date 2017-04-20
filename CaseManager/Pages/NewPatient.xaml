@@ -60,8 +60,8 @@
                 <TextBox Background="LightGray" x:Name="cHistEdit" Height="auto" MinWidth="200" Width="auto" MaxWidth="450" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
                 <TextBox Background="LightGray" x:Name="cTreatEdit" Height="auto" MinWidth="200" Width="auto" MaxWidth="450" Grid.Row="9" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
                 <TextBox Background="LightGray" x:Name="cPriceEdit" Height="30" Width="80" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3"/>
-                <Button Background="DimGray" x:Name="Cancel" Content="Cancel" Foreground="DarkBlue" Grid.Row="11" FontWeight="Bold" Width="150" HorizontalAlignment="Right" Grid.Column="0" VerticalAlignment="Bottom" Height="30" Margin="5"/>
-                <Button Background="DimGray" x:Name="Submit" Content="Submit" Foreground="DarkBlue" Grid.Row="11" FontWeight="Bold" Width="150" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="1" Margin="5"/>
+                <Button Background="DimGray" x:Name="Cancel" Content="Cancel" Foreground="DarkBlue" Grid.Row="11" FontWeight="Bold" Width="150" HorizontalAlignment="Right" Grid.Column="0" VerticalAlignment="Bottom" Height="30" Margin="5" Click="Cancel_Click"/>
+                <Button Background="DimGray" x:Name="Submit" Content="Submit" Foreground="DarkBlue" Grid.Row="11" FontWeight="Bold" Width="150" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Grid.Column="1" Margin="5" Click="Submit_Click"/>
             </Grid>
         </Grid>
     </Grid>

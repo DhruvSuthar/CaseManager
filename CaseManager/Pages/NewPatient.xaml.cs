@@ -29,5 +29,17 @@ namespace CaseManager.Pages
             this.window = window;
             this.DataContext = this;
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            //Source.ClearPatientData();
+            window.mainFrame.GoBack();
+        }
+
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+            //Source.NewPatient();
+            window.mainFrame.GoBack();
+        }
     }
 }
