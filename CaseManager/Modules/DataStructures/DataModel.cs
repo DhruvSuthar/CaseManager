@@ -25,11 +25,11 @@ namespace CaseManager.Modules.DataStructures
         public void ResetData()
         {
             CurrentPatient = new Patient();
-            CaseCount = "";
             LastModified = DateTime.Now;
+            CaseCount = LastModified.Year.ToString() + LastModified.Month.ToString() + "-" + string.Format("{0,4:D4}", count.ToString());
             RevenueFromNew = 0;
             RevenueFromOld = 0;
-            count = 0;
+            count = 1;
         }
 
         public void IncrCase()
@@ -42,6 +42,25 @@ namespace CaseManager.Modules.DataStructures
         {
             count--;
             CaseCount = CaseCount.Split('-')[0] + count.ToString();
+        }
+
+        private void NewPatient()
+        {
+            CurrentPatient = new Patient();
+            IncrCase();
+            CurrentPatient.ID = CaseCount;
+        }
+
+        public void ClearPatientData()
+        {
+            CurrentPatient = new Patient();
+            CurrentPatient.ID = CaseCount;
+        }
+
+        public void SubmitPatient()
+        {
+            //TODO: Insert PatientData to DB
+            NewPatient();
         }
 
         public async void GetDataFromDB()
