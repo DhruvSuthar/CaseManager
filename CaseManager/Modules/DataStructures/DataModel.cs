@@ -26,22 +26,22 @@ namespace CaseManager.Modules.DataStructures
         {
             CurrentPatient = new Patient();
             LastModified = DateTime.Now;
-            CaseCount = LastModified.Year.ToString() + LastModified.Month.ToString() + "-" + string.Format("{0,4:D4}", count.ToString());
-            RevenueFromNew = 0;
-            RevenueFromOld = 0;
             count = 1;
+            CaseCount = LastModified.Year.ToString() + LastModified.Month.ToString() + "-" + count.ToString();
+            RevenueFromNew = 0;
+            RevenueFromOld = 0;  
         }
 
         public void IncrCase()
         {
             count++;
-            CaseCount = CaseCount.Split('-')[0] + count.ToString();
+            CaseCount = CaseCount.Split('-')[0] + "-" + count.ToString();
         }
 
         public void DecrCase()
         {
             count--;
-            CaseCount = CaseCount.Split('-')[0] + count.ToString();
+            CaseCount = CaseCount.Split('-')[0] + "-" + count.ToString();
         }
 
         private void NewPatient()

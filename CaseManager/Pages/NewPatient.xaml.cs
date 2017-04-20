@@ -27,18 +27,18 @@ namespace CaseManager.Pages
         {
             InitializeComponent();
             this.window = window;
+            Source.ClearPatientData();
             this.DataContext = this;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            //Source.ClearPatientData();
             window.mainFrame.GoBack();
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            //Source.NewPatient();
+            Source.SubmitPatient();
             window.mainFrame.GoBack();
         }
     }
