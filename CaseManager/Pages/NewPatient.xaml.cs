@@ -41,5 +41,42 @@ namespace CaseManager.Pages
             Source.SubmitPatient();
             window.mainFrame.GoBack();
         }
+
+        private void numberMask(object sender, TextChangedEventArgs e)
+        {
+            var tbox = sender as TextBox;
+            string txt = tbox.Text;
+            if (txt != "")
+            {
+                try
+                {
+                    int.Parse(txt);
+                }
+                catch (Exception)
+                {
+                    txt = txt.Remove(txt.Length - 1);
+                }
+                tbox.Text = txt;
+                tbox.SelectionStart = tbox.Text.Length;
+            }
+        }
+        private void floatMask(object sender, TextChangedEventArgs e)
+        {
+            var tbox = sender as TextBox;
+            string txt = tbox.Text;
+            if (txt != "")
+            {
+                try
+                {
+                    float.Parse(txt);
+                }
+                catch (Exception)
+                {
+                    txt = txt.Remove(txt.Length - 1);
+                }
+                tbox.Text = txt;
+                tbox.SelectionStart = tbox.Text.Length;
+            }
+        }
     }
 }
