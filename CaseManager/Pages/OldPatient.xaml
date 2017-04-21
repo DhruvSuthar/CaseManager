@@ -27,6 +27,7 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -45,32 +46,32 @@
                 <Label x:Name="cHist" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="History" HorizontalAlignment="Right" Grid.Row="8" VerticalAlignment="Center"/>
                 <Label x:Name="cTreat" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="Treatment" HorizontalAlignment="Right" Grid.Row="9" VerticalAlignment="Center"/>
                 <Label x:Name="cPrice" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Content="Cash Taken" HorizontalAlignment="Right" Grid.Row="10"/>
-                <Label Content="{Binding oPatient.CaseNo}" x:Name="cNoEdit" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
-                <Label Content="{Binding oPatient.CaseDate}" x:Name="cDateEdit" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
-                <Label Content="{Binding oPatient.ExpiresOn}" x:Name="cExpDateEdit" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
-                <TextBlock Text="{Binding oPatient.Name}" x:Name="cNameEdit" Height="auto" MinWidth="200" MaxWidth="450" Width="auto" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
-                <TextBlock Text="{Binding oPatient.Address}" x:Name="cAddrEdit" Height="auto" MinWidth="200" MaxWidth="450" Width="auto" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
-                <TextBlock Text="{Binding oPatient.Age}" x:Name="cAgeEdit" Height="auto" Width="50" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
+                <Label Content="{Binding Source.CurrentPatient.ID}" x:Name="cNoEdit" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
+                <Label Content="{Binding Source.CurrentPatient.CaseDate}" x:Name="cDateEdit" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
+                <Label Content="{Binding Source.CurrentPatient.ExpDate}" x:Name="cExpDateEdit" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding Source.CurrentPatient.Name}" x:Name="cNameEdit" Height="auto" MinWidth="200" MaxWidth="450" Width="auto" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
+                <TextBlock Text="{Binding Source.CurrentPatient.Address}" x:Name="cAddrEdit" Height="auto" MinWidth="200" MaxWidth="450" Width="auto" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
+                <TextBlock Text="{Binding Source.CurrentPatient.Age}" x:Name="cAgeEdit" Height="auto" Width="50" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6">
-                    <TextBox Background="LightGray" x:Name="cBpEditH" Height="auto" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3" />
-                    <Label Content="/"  VerticalAlignment="Center" FontWeight="ExtraBold"/>
-                    <TextBox Background="LightGray" x:Name="cBpEditL" Height="auto" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3" />
+                    <TextBox Background="LightGray" x:Name="cBpEditH" Height="auto" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3" TextChanged="numberMask"/>
+                    <Label Content="/"  VerticalAlignment="Center" FontWeight="ExtraBold" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Background="LightGray" x:Name="cBpEditL" Height="auto" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3" TextChanged="numberMask"/>
                 </StackPanel>
-                <TextBox Background="LightGray" x:Name="cTempEdit" Height="auto" Width="50" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
+                <TextBox Background="LightGray" x:Name="cTempEdit" Height="auto" Width="50" Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3" TextChanged="floatMask"/>
                 <TextBox Background="LightGray" x:Name="cHistEdit" Height="auto" MinWidth="200" Width="auto" MaxWidth="450" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
                 <TextBox Background="LightGray" x:Name="cTreatEdit" Height="auto" MinWidth="200" Width="auto" MaxWidth="450" Grid.Row="9" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
-                <TextBox Background="LightGray" x:Name="cPriceEdit" Height="30" Width="80" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3"/>
-                <Button Background="DimGray" x:Name="Cancel" Content="Cancel" Foreground="DarkBlue" FontWeight="Bold" Width="auto" HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="10" VerticalAlignment="Bottom" Height="30" Margin="5"/>
-                <Button Background="DimGray" x:Name="Submit" Content="Submit" Foreground="DarkBlue" FontWeight="Bold" Width="auto" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="10" Margin="5"/>
+                <TextBox Background="LightGray" x:Name="cPriceEdit" Height="30" Width="80" Grid.Row="10" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="3" Text="{Binding Source.CurrentPatient.CashTaken}" TextChanged="numberMask"/>
+                <Button Background="DimGray" x:Name="Cancel" Content="Cancel" Foreground="DarkBlue" FontWeight="Bold" Width="auto" HorizontalAlignment="Stretch" Grid.Column="0" Grid.Row="11" VerticalAlignment="Bottom" Height="30" Margin="5" Click="Cancel_Click"/>
+                <Button Background="DimGray" x:Name="Submit" Content="Submit" Foreground="DarkBlue" FontWeight="Bold" Width="auto" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Grid.Column="1" Grid.Row="11" Margin="5" Click="Submit_Click"/>
 
                 <Grid Grid.Column="2" Grid.RowSpan="11">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Label Content="History" HorizontalAlignment="Left" Grid.Row="0" FontWeight="Bold"/>
+                    <Label Content="History" HorizontalAlignment="Left" Grid.Row="0" FontWeight="Bold" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
                     <ScrollViewer Margin="5" VerticalScrollBarVisibility="Auto" Grid.Row="1">
-                        <ListView x:Name="HistoryList" Background="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding oPatient.PatientHistory}">
+                        <ListView x:Name="HistoryList" Background="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source.CurrentPatient.HistoryData}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical">
@@ -83,20 +84,16 @@
                                             <TextBlock Text="{Binding BloodPressure}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
                                         </StackPanel>
                                         <StackPanel>
-                                            <TextBlock Text="Blood Pressure : " Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
-                                            <TextBlock Text="{Binding BloodPressure}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
-                                        </StackPanel>
-                                        <StackPanel>
                                             <TextBlock Text="Temperature : " Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
                                             <TextBlock Text="{Binding Temperature}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
                                         </StackPanel>
                                         <StackPanel>
                                             <TextBlock Text="History : " Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
-                                            <TextBlock Text="{Binding Text}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding HistoryText}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
                                         </StackPanel>
                                         <StackPanel>
                                             <TextBlock Text="Treatment : " Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
-                                            <TextBlock Text="{Binding TreatmentDone}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+                                            <TextBlock Text="{Binding Treatment}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
                                         </StackPanel>
                                     </StackPanel>
                                 </DataTemplate>
