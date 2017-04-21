@@ -36,7 +36,7 @@ namespace CaseManager.Pages
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            History h = new History() { BloodPressure = cBpEditH.Text + "/" + cBpEditL.Text, HistoryText = cHistEdit.Text, Temperature = float.Parse(cTempEdit.Text), Treatment = cTreatEdit.Text };
+            History h = new History() { BloodPressure = cBpEditH.Text + "/" + cBpEditL.Text, HistoryText = cHistEdit.Text, Temperature = float.Parse(cTempEdit.Text), Treatment = cTreatEdit.Text, Date = DateTime.Now };
             Source.CurrentPatient.HistoryData.Add(h);
             Source.SubmitPatient();
             window.mainFrame.GoBack();
