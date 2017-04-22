@@ -69,7 +69,7 @@ namespace CaseManager.Modules.DataStructures
             if (DataSource == null) DataSource = new DataProvider();
             var rows = await DataSource.Select(Strings.Stats, Strings.LastModified + "," + Strings.Count + "," + Strings.RevNew + "," + Strings.RevOld);
             int rCount = rows.Count - 1;
-            if (rCount>0)
+            if (rCount >= 0) 
             {
                 if(!CheckNewMonth(rows[rCount]))
                 {
@@ -90,7 +90,7 @@ namespace CaseManager.Modules.DataStructures
 
         private void CaseExpiryCheck()
         {
-            DataSource.Update(Strings.Patient, Strings.Expired + "='True'", Strings.CaseDate + "<'" + DateTime.Now.AddMonths(-3).ToString() + "'");
+            DataSource.Update(Strings.Patient, Strings.Expired + "='True'", Strings.CaseDate + "<'" + DateTime.Now.AddMonths(-3).ToString("yyyyMMdd ") + DateTime.Today.ToString().Split(' ')[1] + "'");
         }
 
         private bool CheckNewMonth(List<string> list)

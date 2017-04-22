@@ -102,7 +102,14 @@ namespace CaseManager.Modules
                         var l = new List<string>();
                         for (int i = 0; i < c; i++)
                         {
-                            l.Add(r.GetString(i));
+                            try
+                            {
+                                l.Add(r.GetString(i));
+                            }
+                            catch(Exception)
+                            {
+                                l.Add(r.GetDateTime(i).ToString());
+                            }
                         }
                         ls.Add(l);
                     }
