@@ -34,13 +34,26 @@ namespace CaseManager.Pages
         {
             window.mainFrame.Navigate(new NewPatient(window));
         }
-        private void OldPatientClick(object sender, RoutedEventArgs e)
-        {
-            window.mainFrame.Navigate(new OldPatient(window));
-        }
+
         private void StatsClick(object sender, RoutedEventArgs e)
         {
             //window.mainFrame.Navigate(new Stats(window));
+        }
+
+        private void popup_LostFocus(object sender, RoutedEventArgs e)
+        {
+            popup.IsOpen = false;
+        }
+
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //TODO:make a query for old case
+        }
+
+        private void ItemsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //TODO: open selected case
+            window.mainFrame.Navigate(new OldPatient(window));
         }
     }
 }

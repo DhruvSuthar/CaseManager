@@ -9,43 +9,47 @@
       Title="Dashboard">
 
     <Grid x:Name="maingrid" Background="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}">
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Center">
-            <Button Background="Transparent" BorderBrush="Transparent" Click="NewPatientClick">
-                <Button.Content>
-                    <Grid Margin="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
-                        <TextBlock Text="New Patient" Grid.Row="1" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Grid>
-                </Button.Content>
-            </Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Click="OldPatientClick">
-                <Button.Content>
-                    <Grid Margin="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
-                        <TextBlock Text="Old Patient" Grid.Row="1" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Grid>
-                </Button.Content>
-            </Button>
-            <Button Background="Transparent" BorderBrush="Transparent" Click="StatsClick">
-                <Button.Content>
-                    <Grid Margin="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="4*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
-                        <TextBlock Text="Statistics" Grid.Row="1" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Grid>
-                </Button.Content>
-            </Button>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Center">
+                <Button Background="Transparent" BorderBrush="Transparent" Click="NewPatientClick">
+                    <Button.Content>
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
+                            <TextBlock Text="New Patient" Grid.Row="1" FontSize="20" FontFamily="SegoeUI" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <Button Background="Transparent" BorderBrush="Transparent" Click="StatsClick">
+                    <Button.Content>
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
+                            <TextBlock Text="Statistics" Grid.Row="1" FontSize="20" FontFamily="SegoeUI" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <TextBlock Text="Old Patient" Grid.Row="1" FontSize="20" FontFamily="SegoeUI" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="SearchBar" Width="500" Height="30" Margin="5" TextChanged="SearchBar_TextChanged"/>
+            <Popup x:Name="popup" PlacementTarget="{Binding  ElementName=SearchBar}" Width="400" MaxHeight="500" Height="auto" LostFocus="popup_LostFocus">
+                <ListView x:Name="ItemsList" SelectionChanged="ItemsList_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="{Binding CaseID}"/>
+                                <Label Content="{Binding PatientName}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Popup>
         </StackPanel>
     </Grid>
 </Page>
