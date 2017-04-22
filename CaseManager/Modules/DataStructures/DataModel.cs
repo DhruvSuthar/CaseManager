@@ -58,9 +58,20 @@ namespace CaseManager.Modules.DataStructures
             CurrentPatient.ID = CaseCount;
         }
 
-        public void SubmitPatient()
+        public void SubmitPatient(bool IsNewPatient)
         {
-            //TODO: Insert PatientData to DB
+            if(IsNewPatient)
+            {
+                TodaysStats.RevFromNew += CurrentPatient.CashTaken;
+                RevenueFromNew += CurrentPatient.CashTaken;
+                //DataSource.Insert(new List<string>() { CaseCount, CurrentPatient.Name, CurrentPatient.ExpDate.ToString("yyyyMMdd ") + CurrentPatient.ExpDate.ToString().Split(' ')[1], CurrentPatient.ToString(), "false" }, Strings.Patient);
+            }
+            else
+            {
+                TodaysStats.RevFromOld += CurrentPatient.CashTaken;
+                RevenueFromOld += CurrentPatient.CashTaken;
+                //DataSource.Update(Strings.Patient, Strings.PatientInstance + "='" + CurrentPatient.ToString() + "'", Strings.CaseID + "='" + CaseCount + "'");
+            }
             NewPatient();
         }
 

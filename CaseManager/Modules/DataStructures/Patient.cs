@@ -15,7 +15,7 @@ namespace CaseManager.Modules.DataStructures
         public DateTime CaseDate { get; set; }
         public DateTime ExpDate { get; set; }
         public List<History> HistoryData { get; set; }
-        public float CashTaken { get; set; }
+        public int CashTaken { get; set; }
 
         public Patient()
         {
