@@ -28,5 +28,9 @@ namespace CaseManager.Modules.DataStructures
         {
             return JsonConvert.SerializeObject(this);
         }
+        public static Patient GetPatient(string data)
+        {
+            return JsonConvert.DeserializeObject<Patient>(data);
+        }
     }
 }

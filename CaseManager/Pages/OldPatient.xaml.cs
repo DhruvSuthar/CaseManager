@@ -27,6 +27,7 @@ namespace CaseManager.Pages
         {
             InitializeComponent();
             this.window = window;
+            Source.CurrentPatient.CashTaken = 0;
             this.DataContext = this;
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -38,7 +39,7 @@ namespace CaseManager.Pages
         {
             History h = new History() { BloodPressure = cBpEditH.Text + "/" + cBpEditL.Text, HistoryText = cHistEdit.Text, Temperature = float.Parse(cTempEdit.Text), Treatment = cTreatEdit.Text, Date = DateTime.Now };
             Source.CurrentPatient.HistoryData.Add(h);
-            Source.SubmitPatient();
+            Source.SubmitPatient(false);
             window.mainFrame.GoBack();
         }
         private void numberMask(object sender, TextChangedEventArgs e)

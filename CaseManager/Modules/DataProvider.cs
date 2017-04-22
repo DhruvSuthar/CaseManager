@@ -96,7 +96,12 @@ namespace CaseManager.Modules
                     cmd.CommandText = "SELECT " + columns + " FROM " + table;
                     if (where != "") cmd.CommandText += " WHERE " + where;
                     var r = cmd.ExecuteReader();
-                    int c = columns.Split(',').Length;
+                    int c = 0;
+                    try
+                    {
+                        c = columns.Split(',').Length;
+                    }
+                    catch (Exception) { }
                     while (r.Read())
                     {
                         var l = new List<string>();

@@ -49,9 +49,9 @@
                 <Label Content="{Binding Source.CurrentPatient.ID}" x:Name="cNoEdit" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"/>
                 <Label Content="{Binding Source.CurrentPatient.CaseDate}" x:Name="cDateEdit" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center"/>
                 <Label Content="{Binding Source.CurrentPatient.ExpDate}" x:Name="cExpDateEdit" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"/>
-                <TextBlock Text="{Binding Source.CurrentPatient.Name}" x:Name="cNameEdit" Height="auto" MinWidth="200" MaxWidth="450" Width="auto" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
-                <TextBlock Text="{Binding Source.CurrentPatient.Address}" x:Name="cAddrEdit" Height="auto" MinWidth="200" MaxWidth="450" Width="auto" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
-                <TextBlock Text="{Binding Source.CurrentPatient.Age}" x:Name="cAgeEdit" Height="auto" Width="50" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3"/>
+                <TextBlock Text="{Binding Source.CurrentPatient.Name}" x:Name="cNameEdit" Height="auto" MinWidth="200" MaxWidth="450" Width="auto" Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinHeight="30" Margin="3" FontWeight="Bold" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="{Binding Source.CurrentPatient.Address}" x:Name="cAddrEdit" Height="auto" MinWidth="200" MaxWidth="450" Width="auto" Grid.Row="4" Grid.Column="1" VerticalAlignment="Bottom" TextWrapping="Wrap" HorizontalAlignment="Left" FontWeight="Bold" MinHeight="30" Margin="3" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Text="{Binding Source.CurrentPatient.Age}" x:Name="cAgeEdit" Height="auto" Width="50" Grid.Row="5" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" MinHeight="30" Margin="3" FontWeight="Bold" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="6">
                     <TextBox Background="LightGray" x:Name="cBpEditH" Height="auto" Width="50" VerticalAlignment="Center" HorizontalAlignment="Left" MinHeight="30" Margin="3" TextChanged="numberMask"/>
                     <Label Content="/"  VerticalAlignment="Center" FontWeight="ExtraBold" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
@@ -71,7 +71,7 @@
                     </Grid.RowDefinitions>
                     <Label Content="History" HorizontalAlignment="Left" Grid.Row="0" FontWeight="Bold" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
                     <ScrollViewer Margin="5" VerticalScrollBarVisibility="Auto" Grid.Row="1">
-                        <ListView x:Name="HistoryList" Background="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source.CurrentPatient.HistoryData}">
+                        <ListView x:Name="HistoryList" Background="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source.CurrentPatient.HistoryData}" DataContext="{Binding}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Vertical">

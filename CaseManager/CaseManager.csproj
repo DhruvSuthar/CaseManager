@@ -89,6 +89,7 @@
     <Compile Include="Modules\DataStructures\History.cs" />
     <Compile Include="Modules\DataStructures\Patient.cs" />
     <Compile Include="Modules\DataStructures\DataModel.cs" />
+    <Compile Include="Modules\DataStructures\SearchView.cs" />
     <Compile Include="Modules\Strings.cs" />
     <Compile Include="Pages\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>

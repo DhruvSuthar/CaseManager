@@ -45,15 +45,42 @@ namespace CaseManager.Pages
             popup.IsOpen = false;
         }
 
-        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //TODO:make a query for old case
+            popup.IsOpen = false;
+            string txt = SearchBar.Text;
+            if (txt.Contains("'")) txt = txt.Replace("'", "''");
+            try
+            {
+                if (SearchBar.Text != "")
+                {
+                    var list = await Source.DataSource.Select(Strings.Patient, Strings.CaseID + "," + Strings.PatientName, Strings.Expired + "='false' AND " + Strings.CaseID + " LIKE '%" + txt + "%' OR " + Strings.PatientName + " LIKE '%" + txt + "%'");
+                    var SearchViewSource = new List<SearchView>();
+                    foreach (var item in list)
+                    {
+                        SearchViewSource.Add(new SearchView() { CaseID = item[0], PatientName = item[1] });
+                    }
+                    ItemsList.ItemsSource = SearchViewSource;
+                    popup.IsOpen = true;
+                }
+            }
+            catch(Exception)
+            {
+
+            }
         }
 
         private void ItemsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //TODO: open selected case
+            string name = (ItemsList.SelectedItem as SearchView).CaseID;
+            LoadPatient(name);
             window.mainFrame.Navigate(new OldPatient(window));
+        }
+
+        private async void LoadPatient(string CID)
+        {
+            var data = await Source.DataSource.Select(Strings.Patient, Strings.PatientInstance, Strings.CaseID + "='" + CID + "'");
+            Source.CurrentPatient = Patient.GetPatient(data[0][0]);
         }
     }
 }
