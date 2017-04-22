@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CaseManager.Modules.DataStructures
 {
@@ -22,6 +23,10 @@ namespace CaseManager.Modules.DataStructures
             CaseDate = DateTime.Now;
             ExpDate = CaseDate.AddMonths(3);
             HistoryData = new List<History>();
+        }
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
         }
     }
 }

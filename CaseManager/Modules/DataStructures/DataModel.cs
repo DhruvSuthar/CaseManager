@@ -60,19 +60,30 @@ namespace CaseManager.Modules.DataStructures
 
         public void SubmitPatient(bool IsNewPatient)
         {
+            EscapeForSQLDB();
             if(IsNewPatient)
             {
                 TodaysStats.RevFromNew += CurrentPatient.CashTaken;
                 RevenueFromNew += CurrentPatient.CashTaken;
-                //DataSource.Insert(new List<string>() { CaseCount, CurrentPatient.Name, CurrentPatient.ExpDate.ToString("yyyyMMdd ") + CurrentPatient.ExpDate.ToString().Split(' ')[1], CurrentPatient.ToString(), "false" }, Strings.Patient);
+                DataSource.Insert(new List<string>() { CaseCount, CurrentPatient.Name, CurrentPatient.ExpDate.ToString("yyyyMMdd ") + CurrentPatient.ExpDate.ToString().Split(' ')[1], CurrentPatient.ToString(), "false" }, Strings.Patient);
             }
             else
             {
                 TodaysStats.RevFromOld += CurrentPatient.CashTaken;
                 RevenueFromOld += CurrentPatient.CashTaken;
-                //DataSource.Update(Strings.Patient, Strings.PatientInstance + "='" + CurrentPatient.ToString() + "'", Strings.CaseID + "='" + CaseCount + "'");
+                DataSource.Update(Strings.Patient, Strings.PatientInstance + "='" + CurrentPatient.ToString() + "'", Strings.CaseID + "='" + CaseCount + "'");
             }
             NewPatient();
+        }
+        public void EscapeForSQLDB()
+        {
+            if (CurrentPatient.Address.Contains("'")) CurrentPatient.Address = CurrentPatient.Address.Replace("'", "''");
+            if (CurrentPatient.Name.Contains("'")) CurrentPatient.Name = CurrentPatient.Name.Replace("'", "''");
+            foreach (var item in CurrentPatient.HistoryData)
+            {
+                if (item.HistoryText.Contains("'")) item.HistoryText = item.HistoryText.Replace("'", "''");
+                if (item.Treatment.Contains("'")) item.Treatment = item.Treatment.Replace("'", "''");
+            }
         }
 
         public async void GetDataFromDB()
