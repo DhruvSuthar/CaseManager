@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Modules\ColorScheme.cs" />
     <Compile Include="Modules\DataProvider.cs" />
+    <Compile Include="Modules\DataStructures\DailyStats.cs" />
     <Compile Include="Modules\DataStructures\History.cs" />
     <Compile Include="Modules\DataStructures\Patient.cs" />
     <Compile Include="Modules\DataStructures\DataModel.cs" />

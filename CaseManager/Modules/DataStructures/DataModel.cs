@@ -16,10 +16,11 @@ namespace CaseManager.Modules.DataStructures
         public int RevenueFromNew { get; set; }
         public int RevenueFromOld { get; set; }
         public DataProvider DataSource { get; set; }
+        public DailyStats TodaysStats { get; set; } = new DailyStats();
 
         public DataModel()
         {
-            //GetDataFromDB();
+            GetDataFromDB();
         }
 
         public void ResetData()
@@ -67,18 +68,24 @@ namespace CaseManager.Modules.DataStructures
         {
             if (DataSource == null) DataSource = new DataProvider();
             var rows = await DataSource.Select(Strings.Stats, Strings.LastModified + "," + Strings.Count + "," + Strings.RevNew + "," + Strings.RevOld);
-            if(rows.Count!=0)
+            int rCount = rows.Count - 1;
+            if (rCount>0)
             {
-                if(!CheckNewMonth(rows[0]))
+                if(!CheckNewMonth(rows[rCount]))
                 {
-                    LastModified = DateTime.Parse(rows[0][0]);
-                    count = int.Parse(rows[0][1]);
-                    RevenueFromNew = int.Parse(rows[0][2]);
-                    RevenueFromOld = int.Parse(rows[0][3]);
+                    LastModified = DateTime.Parse(rows[rCount][0]);
+                    count = int.Parse(rows[rCount][1]);
+                    RevenueFromNew = int.Parse(rows[rCount][2]);
+                    RevenueFromOld = int.Parse(rows[rCount][3]);
                     CaseCount = LastModified.Year.ToString() + LastModified.Month.ToString() + "-" + count;
                 }
                 CaseExpiryCheck();
             }
+            else
+            {
+                DataSource.Insert(new List<string>() { DateTime.Today.ToString("yyyyMMdd ")+DateTime.Today.ToString().Split(' ')[1], "0", "0", "0" }, Strings.Stats);
+            }
+            InitializeDailyStats();
         }
 
         private void CaseExpiryCheck()
@@ -104,6 +111,20 @@ namespace CaseManager.Modules.DataStructures
                 }
             }
             return false;
+        }
+
+        public async void InitializeDailyStats()
+        {
+            var row = await DataSource.Select(Strings.DailyStats, Strings.RevNew + "," + Strings.RevOld, Strings.Day + "='" + TodaysStats.Today.Day + "' AND " + Strings.Month + "='" + TodaysStats.Today.Month + "' AND " + Strings.Year + "='" + TodaysStats.Today.Year + "'");
+            if (row.Count != 0) 
+            {
+                TodaysStats.RevFromNew = int.Parse(row[0][0]);
+                TodaysStats.RevFromOld = int.Parse(row[0][1]);
+            }
+            else
+            {
+                DataSource.Insert(new List<string>() { TodaysStats.Today.Day.ToString(), TodaysStats.Today.Month.ToString(), TodaysStats.Today.Year.ToString(), TodaysStats.RevFromNew.ToString(), TodaysStats.RevFromOld.ToString() }, Strings.DailyStats);
+            }
         }
     }
 }

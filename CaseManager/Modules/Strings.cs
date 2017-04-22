@@ -8,12 +8,12 @@ namespace CaseManager.Modules
 {
     public class Strings
     {
-        public static string ConnectionString { get { return AppDomain.CurrentDomain.BaseDirectory; } }
+        public static string ConnectionString { get { return "Persist Security Info = False; Integrated Security = SSPI; database = CaseMgmtData; server = GAMERSREPUBLIC\\SQLEXPRESS"; } }
 
         //Tables
         public static string Patient = "PatientData";
-        public static string Stats = "Statistics";
-        public static string Turnover = "Turnover";
+        public static string Stats = "UsageStats";
+        public static string DailyStats = "DailyStats";
 
         //Columns
         public static string LastModified = "LastModified";
@@ -24,8 +24,12 @@ namespace CaseManager.Modules
         public static string PatientName = "Name";
         public static string CaseID = "CID";
         public static string CaseDate = "CaseDate";
+        public static string ExpiresOn = "Expdate";
         public static string Date = "Date";
+        public static string PatientInstance = "Data";
         public static string Amount = "Amount";
-
+        public static string Day = "Day";
+        public static string Month = "Month";
+        public static string Year = "Year";
     }
 }
