@@ -32,7 +32,7 @@ namespace CaseManager.Pages
         }
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            window.mainFrame.GoBack();
+            window.mainFrame.Navigate(new Dashboard(window));
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
