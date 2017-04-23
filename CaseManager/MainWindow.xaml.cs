@@ -28,7 +28,6 @@ namespace CaseManager
             Theme = ColorScheme.GetDarkTheme();
             InitializeComponent();
             dm = (Application.Current as App).DefaultDataModel;
-            dm.ResetData();
             mainFrame.Navigate(new Dashboard(this));
             DataContext = this;
         }

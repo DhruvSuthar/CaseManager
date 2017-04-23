@@ -69,8 +69,8 @@ namespace CaseManager.Modules.DataStructures
             }
             else
             {
-                TodaysStats.RevFromOld = TodaysStats.RevFromOld + CurrentPatient.CashTaken;
-                RevenueFromOld = RevenueFromOld + CurrentPatient.CashTaken;
+                TodaysStats.RevFromOld += CurrentPatient.CashTaken;
+                RevenueFromOld += CurrentPatient.CashTaken;
                 DataSource.Update(Strings.Patient, Strings.PatientInstance + "='" + CurrentPatient.ToString() + "'", Strings.CaseID + "='" + CaseCount + "'");
             }
             NewPatient();
@@ -105,7 +105,10 @@ namespace CaseManager.Modules.DataStructures
             }
             else
             {
-                DataSource.Insert(new List<string>() { DateTime.Today.ToString("yyyyMMdd ")+DateTime.Today.ToString().Split(' ')[1], "0", "0", "0" }, Strings.Stats);
+                LastModified = DateTime.Today;
+                count = 1;
+                CaseCount = DateTime.Today.Year.ToString() + DateTime.Today.Month.ToString() + "-" + count.ToString();
+                DataSource.Insert(new List<string>() { DateTime.Today.ToString("yyyyMMdd ")+DateTime.Today.ToString().Split(' ')[1], "1", "0", "0" }, Strings.Stats);
             }
             InitializeDailyStats();
         }
@@ -124,11 +127,11 @@ namespace CaseManager.Modules.DataStructures
                 if(Now.Day != ModifiedDate.Day)
                 {
                     LastModified = Now;
-                    count = 0;
+                    count = 1;
                     CaseCount = Now.Year.ToString() + Now.Month.ToString() + "-" + count;
                     RevenueFromNew = 0;
                     RevenueFromOld = 0;
-                    DataSource.Insert(new List<string>() { Now.ToString(), "0", "0", "0" }, Strings.Stats);
+                    DataSource.Insert(new List<string>() { Now.ToString(), "1", "0", "0" }, Strings.Stats);
                     return true;
                 }
             }
