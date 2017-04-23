@@ -80,7 +80,7 @@ namespace CaseManager.Modules
             {
                 try
                 {
-                    cmd.CommandText = "UPPDATE " + table + " SET " + set + " WHERE " + where;
+                    cmd.CommandText = "UPDATE " + table + " SET " + set + " WHERE " + where;
                     cmd.ExecuteNonQuery();
                 }
                 catch (Exception) { }

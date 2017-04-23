@@ -112,7 +112,7 @@ namespace CaseManager.Modules.DataStructures
 
         private void CaseExpiryCheck()
         {
-            DataSource.Update(Strings.Patient, Strings.Expired + "='True'", Strings.CaseDate + "<'" + DateTime.Now.AddMonths(-3).ToString("yyyyMMdd ") + DateTime.Today.ToString().Split(' ')[1] + "'");
+            DataSource.Update(Strings.Patient, Strings.Expired + "='True'", Strings.ExpiresOn + "<'" + DateTime.Now.ToString("yyyyMMdd ") + DateTime.Today.ToString().Split(' ')[1] + "'");
         }
 
         private bool CheckNewMonth(List<string> list)
@@ -147,6 +147,12 @@ namespace CaseManager.Modules.DataStructures
             {
                 DataSource.Insert(new List<string>() { TodaysStats.Today.Day.ToString(), TodaysStats.Today.Month.ToString(), TodaysStats.Today.Year.ToString(), TodaysStats.RevFromNew.ToString(), TodaysStats.RevFromOld.ToString() }, Strings.DailyStats);
             }
+        }
+
+        public void UpdateDB()
+        {
+            DataSource.Update(Strings.DailyStats, Strings.RevNew + "='" + TodaysStats.RevFromNew + "'," + Strings.RevOld + "='" + TodaysStats.RevFromOld + "'", Strings.Day + "='" + TodaysStats.Today.Day + "' AND " + Strings.Month + "='" + TodaysStats.Today.Month + "' AND " + Strings.Year + "='" + TodaysStats.Today.Year + "'");
+            DataSource.Update(Strings.Stats, Strings.Count + "='" + count + "'," + Strings.RevNew + "='" + RevenueFromNew + "'," + Strings.RevOld + "='" + RevenueFromOld + "'", Strings.LastModified + "='" + LastModified.ToString("yyyyMMdd ") + DateTime.Today.ToString().Split(' ')[1] + "'");
         }
     }
 }

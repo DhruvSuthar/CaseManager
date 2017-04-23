@@ -52,5 +52,10 @@ namespace CaseManager
             (mainFrame.Content as Page).DataContext = null;
             (mainFrame.Content as Page).DataContext = (mainFrame.Content as Page);
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            dm.UpdateDB();
+        }
     }
 }
