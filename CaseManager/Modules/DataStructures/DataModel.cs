@@ -69,8 +69,8 @@ namespace CaseManager.Modules.DataStructures
             }
             else
             {
-                TodaysStats.RevFromOld += CurrentPatient.CashTaken;
-                RevenueFromOld += CurrentPatient.CashTaken;
+                TodaysStats.RevFromOld = TodaysStats.RevFromOld + CurrentPatient.CashTaken;
+                RevenueFromOld = RevenueFromOld + CurrentPatient.CashTaken;
                 DataSource.Update(Strings.Patient, Strings.PatientInstance + "='" + CurrentPatient.ToString() + "'", Strings.CaseID + "='" + CaseCount + "'");
             }
             NewPatient();
@@ -86,10 +86,10 @@ namespace CaseManager.Modules.DataStructures
             }
         }
 
-        public async void GetDataFromDB()
+        public void GetDataFromDB()
         {
             if (DataSource == null) DataSource = new DataProvider();
-            var rows = await DataSource.Select(Strings.Stats, Strings.LastModified + "," + Strings.Count + "," + Strings.RevNew + "," + Strings.RevOld);
+            var rows = DataSource.Select(Strings.Stats, Strings.LastModified + "," + Strings.Count + "," + Strings.RevNew + "," + Strings.RevOld);
             int rCount = rows.Count - 1;
             if (rCount >= 0) 
             {
@@ -135,9 +135,9 @@ namespace CaseManager.Modules.DataStructures
             return false;
         }
 
-        public async void InitializeDailyStats()
+        public void InitializeDailyStats()
         {
-            var row = await DataSource.Select(Strings.DailyStats, Strings.RevNew + "," + Strings.RevOld, Strings.Day + "='" + TodaysStats.Today.Day + "' AND " + Strings.Month + "='" + TodaysStats.Today.Month + "' AND " + Strings.Year + "='" + TodaysStats.Today.Year + "'");
+            var row = DataSource.Select(Strings.DailyStats, Strings.RevNew + "," + Strings.RevOld, Strings.Day + "='" + TodaysStats.Today.Day + "' AND " + Strings.Month + "='" + TodaysStats.Today.Month + "' AND " + Strings.Year + "='" + TodaysStats.Today.Year + "'");
             if (row.Count != 0) 
             {
                 TodaysStats.RevFromNew = int.Parse(row[0][0]);

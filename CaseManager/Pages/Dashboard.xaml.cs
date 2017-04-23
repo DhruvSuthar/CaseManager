@@ -45,7 +45,7 @@ namespace CaseManager.Pages
             popup.IsOpen = false;
         }
 
-        private async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
             popup.IsOpen = false;
             string txt = SearchBar.Text;
@@ -54,7 +54,7 @@ namespace CaseManager.Pages
             {
                 if (SearchBar.Text != "")
                 {
-                    var list = await Source.DataSource.Select(Strings.Patient, Strings.CaseID + "," + Strings.PatientName, Strings.Expired + "='false' AND " + Strings.CaseID + " LIKE '%" + txt + "%' OR " + Strings.PatientName + " LIKE '%" + txt + "%'");
+                    var list = Source.DataSource.Select(Strings.Patient, Strings.CaseID + "," + Strings.PatientName, Strings.Expired + "='false' AND " + Strings.CaseID + " LIKE '%" + txt + "%' OR " + Strings.PatientName + " LIKE '%" + txt + "%'");
                     var SearchViewSource = new List<SearchView>();
                     foreach (var item in list)
                     {
@@ -77,9 +77,9 @@ namespace CaseManager.Pages
             window.mainFrame.Navigate(new OldPatient(window));
         }
 
-        private async void LoadPatient(string CID)
+        private void LoadPatient(string CID)
         {
-            var data = await Source.DataSource.Select(Strings.Patient, Strings.PatientInstance, Strings.CaseID + "='" + CID + "'");
+            var data = Source.DataSource.Select(Strings.Patient, Strings.PatientInstance, Strings.CaseID + "='" + CID + "'");
             Source.CurrentPatient = Patient.GetPatient(data[0][0]);
         }
     }
