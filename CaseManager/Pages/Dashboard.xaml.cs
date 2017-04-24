@@ -37,7 +37,7 @@ namespace CaseManager.Pages
 
         private void StatsClick(object sender, RoutedEventArgs e)
         {
-            //window.mainFrame.Navigate(new Stats(window));
+            window.mainFrame.Navigate(new Statistics(window));
         }
 
         private void popup_LostFocus(object sender, RoutedEventArgs e)
