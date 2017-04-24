@@ -81,6 +81,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Statistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modules\ColorScheme.cs" />
@@ -99,6 +103,9 @@
     </Compile>
     <Compile Include="Pages\OldPatient.xaml.cs">
       <DependentUpon>OldPatient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Statistics.xaml.cs">
+      <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
