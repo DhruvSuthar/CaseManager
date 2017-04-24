@@ -8,10 +8,25 @@
       d:DesignHeight="768" d:DesignWidth="1366"
       Title="Dashboard">
 
+    <Page.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid x:Name="maingrid" Background="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10" HorizontalAlignment="Center">
-                <Button Background="Transparent" BorderBrush="Transparent" Click="NewPatientClick">
+                <Button Background="Transparent" BorderBrush="Transparent" Click="NewPatientClick" Style="{StaticResource ButtonStyle}">
                     <Button.Content>
                         <Grid Margin="5">
                             <Grid.RowDefinitions>
@@ -23,7 +38,7 @@
                         </Grid>
                     </Button.Content>
                 </Button>
-                <Button Background="Transparent" BorderBrush="Transparent" Click="StatsClick">
+                <Button Background="Transparent" BorderBrush="Transparent" Click="StatsClick" Style="{StaticResource ButtonStyle}">
                     <Button.Content>
                         <Grid Margin="5">
                             <Grid.RowDefinitions>
