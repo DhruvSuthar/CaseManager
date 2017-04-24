@@ -29,5 +29,10 @@ namespace CaseManager.Pages
             this.window = window;
             this.DataContext = this;
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            window.mainFrame.Navigate(new Dashboard(window));
+        }
     }
 }
