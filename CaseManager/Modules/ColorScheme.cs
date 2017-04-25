@@ -12,6 +12,7 @@ namespace CaseManager.Modules
         public Brush ForegroundColorPrimary { get; set; }
         public Brush BackgroundColor { get; set; }
         public Brush ForegroundColorSecondary { get; set; }
+        public Brush BorderBrush { get; set; }
 
         public static ColorScheme GetDarkTheme()
         {
@@ -19,6 +20,7 @@ namespace CaseManager.Modules
             cs.ForegroundColorPrimary = Brushes.White;
             cs.ForegroundColorSecondary = Brushes.Gray;
             cs.BackgroundColor = Brushes.Black;
+            cs.BorderBrush = Brushes.Yellow;
             return cs;
         }
 
@@ -28,6 +30,7 @@ namespace CaseManager.Modules
             cs.ForegroundColorPrimary = Brushes.DarkBlue;
             cs.ForegroundColorSecondary = Brushes.White;
             cs.BackgroundColor = Brushes.DimGray;
+            cs.BorderBrush = Brushes.Black;
             return cs;
         }
     }
