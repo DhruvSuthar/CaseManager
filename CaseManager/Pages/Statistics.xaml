@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CaseManager.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="768" d:DesignWidth="1366"
-      Title="Statistics" Background="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}">
+      Title="Statistics" Background="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}" x:Name="StatsPage">
 
     <Page.Resources>
         <Style x:Key="ButtonStyle" TargetType="Button">
@@ -22,76 +22,141 @@
             </Setter>
         </Style>
     </Page.Resources>
-    <Grid Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Button Height="60" Width="60" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Back_Click" Style="{StaticResource ButtonStyle}">
-                <Button.Content>
-                    <Grid>
-                        <Ellipse Fill="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <Ellipse Fill="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}" Width="46" Height="46" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="&#xE112;" FontFamily="Segoe UI Symbol" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
-                    </Grid>
-                </Button.Content>
-            </Button>
-            <Label Content="Statistics" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Margin="60,5,0,5"/>
-        </Grid>
-        <Grid Grid.Row="1">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <Grid Background="Transparent">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Today" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="0" FontSize="25" Margin="10,0,0,5" VerticalAlignment="Center" FontWeight="Bold"/>
-            <TextBlock Text="This Month" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" FontSize="25" Margin="10,0,0,5" VerticalAlignment="Center" FontWeight="Bold"/>
-            <Grid Grid.Row="1" Grid.Column="0" Margin="5">
+            <Grid Grid.Row="0">
+                <Button Height="60" Width="60" Background="Transparent" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Back_Click" Style="{StaticResource ButtonStyle}">
+                    <Button.Content>
+                        <Grid>
+                            <Ellipse Fill="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Width="50" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Ellipse Fill="{Binding Theme.BackgroundColor, UpdateSourceTrigger=PropertyChanged}" Width="46" Height="46" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="&#xE112;" FontFamily="Segoe UI Symbol" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Grid>
+                    </Button.Content>
+                </Button>
+                <Label Content="Statistics" FontSize="30" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" FontWeight="Bold" Margin="60,5,0,5"/>
+            </Grid>
+            <Grid Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Border Background="{Binding Theme.BorderBrush}" Opacity="0.3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.RowSpan="2"/>
-                <StackPanel Grid.Row="1" Margin="5">
-                    <TextBlock Text="Total income from new cases :" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding Source.TodaysStats.RevFromNew}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
-                    <TextBlock Text="Total income from old cases :" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding Source.TodaysStats.RevFromOld}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
-                </StackPanel>
-            </Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Today" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="0" FontSize="25" Margin="10,0,0,5" VerticalAlignment="Center" FontWeight="Bold"/>
+                <TextBlock Text="This Month" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" FontSize="25" Margin="10,0,0,5" VerticalAlignment="Center" FontWeight="Bold"/>
+                <Grid Grid.Row="1" Grid.Column="0" Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Background="{Binding Theme.BorderBrush}" Opacity="0.3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.RowSpan="2"/>
+                    <StackPanel Grid.Row="1" Margin="5">
+                        <TextBlock Text="Total income from new cases :" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Source.TodaysStats.RevFromNew}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
+                        <TextBlock Text="Total income from old cases :" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Source.TodaysStats.RevFromOld}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
+                    </StackPanel>
+                </Grid>
 
-            <Grid Grid.Row="1" Grid.Column="1" Margin="5">
+                <Grid Grid.Row="1" Grid.Column="1" Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border Background="{Binding Theme.BorderBrush}" Opacity="0.3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.RowSpan="2"/>
+                    <StackPanel Grid.Row="1" Margin="5" Background="Transparent">
+                        <TextBlock Text="Total income from new cases :" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Source.RevenueFromNew}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
+                        <TextBlock Text="Total income from old cases :" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Source.RevenueFromOld}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Border Background="{Binding Theme.BorderBrush}" Opacity="0.3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0" Grid.RowSpan="2"/>
-                <StackPanel Grid.Row="1" Margin="5" Background="Transparent">
-                    <TextBlock Text="Total income from new cases :" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding Source.RevenueFromNew}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
-                    <TextBlock Text="Total income from old cases :" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding Source.RevenueFromOld}" Foreground="{Binding Theme.ForegroundColorSecondary, UpdateSourceTrigger=PropertyChanged}" Margin="0,3,0,0" FontSize="15" FontWeight="Bold"/>
-                </StackPanel>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Yearly" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.ColumnSpan="2" FontSize="25" Margin="10,0,0,5" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <Border Background="{Binding Theme.BorderBrush}" Opacity="0.3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="5"/>
+                <ComboBox x:Name="YearDropdown" Grid.Column="0" Grid.Row="2" Margin="10" SelectionChanged="YearDropdown_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Text="{Binding}" Foreground="Black" FontWeight="Bold"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <Grid Grid.Row="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Month region -->
+                    <Label Content="April" Grid.Column="0" Grid.Row="0" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="May" Grid.Column="0" Grid.Row="1" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="June" Grid.Column="0" Grid.Row="2" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="July" Grid.Column="0" Grid.Row="3" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="August" Grid.Column="0" Grid.Row="4" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="September" Grid.Column="0" Grid.Row="5" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="October" Grid.Column="0" Grid.Row="6" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="November" Grid.Column="0" Grid.Row="7" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="December" Grid.Column="0" Grid.Row="8" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="January" Grid.Column="0" Grid.Row="9" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="February" Grid.Column="0" Grid.Row="10" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="March" Grid.Column="0" Grid.Row="11" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="Total" Grid.Column="0" Grid.Row="12" Margin="3" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorPrimary}" FontSize="20" FontWeight="Bold"/>
+
+                    <!-- Data region-->
+                    <Label Content="{Binding Monthly[0]}" Grid.Column="1" Grid.Row="0" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="{Binding Monthly[1]}" Grid.Column="1" Grid.Row="1" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="{Binding Monthly[2]}" Grid.Column="1" Grid.Row="2" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="{Binding Monthly[3]}" Grid.Column="1" Grid.Row="3" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="{Binding Monthly[4]}" Grid.Column="1" Grid.Row="4" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="{Binding Monthly[5]}" Grid.Column="1" Grid.Row="5" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="{Binding Monthly[6]}" Grid.Column="1" Grid.Row="6" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="{Binding Monthly[7]}" Grid.Column="1" Grid.Row="7" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="{Binding Monthly[8]}" Grid.Column="1" Grid.Row="8" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="{Binding Monthly[9]}" Grid.Column="1" Grid.Row="9" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="{Binding Monthly[10]}" Grid.Column="1" Grid.Row="10" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="{Binding Monthly[11]}" Grid.Column="1" Grid.Row="11" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="15" FontWeight="Bold"/>
+                    <Label Content="{Binding GrandTotal}" Grid.Column="1" Grid.Row="12" Margin="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{Binding Theme.ForegroundColorSecondary}" FontSize="20" FontWeight="Bold"/>
+
+                </Grid>
+                <Grid Grid.Column="1" Grid.Row="3">
+                    
+                </Grid>
             </Grid>
         </Grid>
-        <Grid Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="This Year" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.ColumnSpan="2" FontSize="25" Margin="10,0,0,5" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
-            <Border Background="{Binding Theme.BorderBrush}" Opacity="0.3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="5"/>
-            <!-- TODO : add daily and yearly stats here-->
-        </Grid>
-    </Grid>
+    </ScrollViewer>
 </Page>
