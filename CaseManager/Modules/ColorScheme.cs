@@ -13,6 +13,8 @@ namespace CaseManager.Modules
         public Brush BackgroundColor { get; set; }
         public Brush ForegroundColorSecondary { get; set; }
         public Brush BorderBrush { get; set; }
+        public string PatientImage { get; set; }
+        public string StatsImage { get; set; }
 
         public static ColorScheme GetDarkTheme()
         {
@@ -21,6 +23,8 @@ namespace CaseManager.Modules
             cs.ForegroundColorSecondary = Brushes.Gray;
             cs.BackgroundColor = Brushes.Black;
             cs.BorderBrush = Brushes.Yellow;
+            cs.PatientImage = Strings.Patient_Dark;
+            cs.StatsImage = Strings.Stats_Dark;
             return cs;
         }
 
@@ -31,6 +35,8 @@ namespace CaseManager.Modules
             cs.ForegroundColorSecondary = Brushes.White;
             cs.BackgroundColor = Brushes.DimGray;
             cs.BorderBrush = Brushes.Black;
+            cs.PatientImage = Strings.Patient_Light;
+            cs.StatsImage = Strings.Stats_Light;
             return cs;
         }
     }

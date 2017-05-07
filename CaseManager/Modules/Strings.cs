@@ -31,5 +31,11 @@ namespace CaseManager.Modules
         public static string Day = "Day";
         public static string Month = "Month";
         public static string Year = "Year";
+
+        //Images
+        public static string Patient_Dark = "/Assets/patient-dark.png";
+        public static string Patient_Light = "/Assets/patient-light.png";
+        public static string Stats_Dark = "/Assets/statistics-dark.png";
+        public static string Stats_Light = "/Assets/statistics-light.png";
     }
 }

@@ -33,7 +33,7 @@
                                 <RowDefinition Height="4*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
+                            <Image Source="{Binding Theme.PatientImage}" Stretch="UniformToFill" Height="300" Width="300"/>
                             <TextBlock Text="New Patient" Grid.Row="1" FontSize="20" FontFamily="SegoeUI" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </Button.Content>
@@ -45,7 +45,7 @@
                                 <RowDefinition Height="4*"/>
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <Rectangle Fill="DarkCyan" Stretch="UniformToFill" MaxHeight="300" MaxWidth="300"/>
+                            <Image Source="{Binding Theme.StatsImage}" Stretch="UniformToFill" Height="300" Width="300"/>
                             <TextBlock Text="Statistics" Grid.Row="1" FontSize="20" FontFamily="SegoeUI" Foreground="{Binding Theme.ForegroundColorPrimary, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </Button.Content>
