@@ -74,6 +74,7 @@ namespace CaseManager.Pages
         {
             var list = new List<string>() { "Select a year " };
             list.AddRange(Source.DataSource.SelectStarFromField(Strings.DailyStats, "DISTINCT " + Strings.Year));
+            if (DateTime.Today.Month > 3) list.Add((DateTime.Today.Year + 1).ToString());
             YearDropdown.ItemsSource = list;
             YearDropdown.DataContext = this;
             YearDropdown.SelectedIndex = 0;
